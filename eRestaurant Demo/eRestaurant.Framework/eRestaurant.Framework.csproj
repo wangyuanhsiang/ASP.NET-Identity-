@@ -60,6 +60,7 @@
     <Compile Include="BLL\MenuController.cs" />
     <Compile Include="BLL\ReportController.cs" />
     <Compile Include="BLL\ReservationController.cs" />
+    <Compile Include="BLL\RestaurantAdminController.cs" />
     <Compile Include="BLL\Security\RoleManager.cs" />
     <Compile Include="BLL\Security\UserManger.cs" />
     <Compile Include="BLL\TempController.cs" />
