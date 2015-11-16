@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-9">
             <h2>Users</h2>
-            <asp:ListView ID="UserListView" runat="server" ItemType="eRestaurant.Framework.Entities.Security.ApplicationUser"  >
+            <asp:ListView ID="UserListView" runat="server" ItemType="eRestaurant.Framework.Entities.Security.ApplicationUser" OnItemCommand="UserListView_ItemCommand"  >
                 <EmptyDataTemplate>
                     <table  runat="server" >
                         <tr>
@@ -76,10 +76,50 @@
         </div>
         <div class="col-md-3">
             <h2>Roles</h2>
-            <asp:ListView ID="RoleListView" ItemType="Microsoft.AspNet.Identity.EntityFramework.IdentityRole" runat="server">
+            <asp:ListView ID="RoleListView" ItemType="Microsoft.AspNet.Identity.EntityFramework.IdentityRole" runat="server" OnItemCommand="RoleListView_ItemCommand" >
                 <EmptyDataTemplate>
-
+                    <table runat="server">
+                        <tr>
+                            <td> No riles in this site.
+                                <asp:LinkButton ID="AddDefaultRolesButton" runat="server" Text="Add default security roles" CommandName ="AddDefaultRoles" />
+                            </td>
+                        </tr>
+                    </table>
                 </EmptyDataTemplate>
+                <ItemTemplate>
+                    <tr>
+                        <td>
+                            <asp:Label ID="NameLabel" runat="server" Text='<%# Item.Name %>'>'></asp:Label>
+                        </td>
+                        <td>
+                            <asp:Label ID="UserCountLabel" runat="server" Text='<%# Item.Users.Count %>'>'  ></asp:Label>
+                        </td>
+                    </tr>
+                </ItemTemplate>
+                <LayoutTemplate>
+                    <table runat="server">
+                        <tr runat="server">
+                            <td runat="server">
+                                <table runat="server" id="itemPlaceholderContainer" class="table table-condensed table-hover table-striped" >
+                                    <tr runat="server">
+                                        <th runat="server">Role Name</th>
+                                        <th runat="server">Users</th>
+                                    </tr>
+                                    <tr runat="server" id="itemPlaceholder"></tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr runat="server">
+                            <td runat="server">
+                                <asp:DataPager ID="DataPager2" runat="server">
+                                    <Fields>
+                                        <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="true" ShowLastPageButton="true" />
+                                    </Fields>
+                                </asp:DataPager>
+                            </td>
+                        </tr>
+                    </table>
+                </LayoutTemplate>
             </asp:ListView>
         </div>
     </div>
