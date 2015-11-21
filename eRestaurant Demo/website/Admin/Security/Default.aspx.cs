@@ -11,8 +11,8 @@ public partial class Admin_Security_Default : System.Web.UI.Page
     {
         if(!IsPostBack)
         {
-            DataBlindRoleList();
             DataBindUserList();
+            DataBlindRoleList();
         }
     }
 

@@ -25,22 +25,22 @@
                             <asp:LinkButton ID="DeleteButton" runat="server" Text="Delete" CommandName="Delete" />
                         </td>
                         <td>
-                            <asp:Label ID="UserNameLabel" runat="server" Text='<%# Item.UserName %>'></asp:Label>
+                            <asp:Label ID="UserNameLabel" runat="server" Text="<%# Item.UserName %>"></asp:Label>
                         </td>
                         <td>
-                            <asp:Label ID="EmailLabel" runat="server" Text='<%# Item.Email %>'>'></asp:Label>
+                            <asp:Label ID="EmailLabel" runat="server" Text="<%# Item.Email %>"></asp:Label>
                         </td>
                         <td>
                             <em>password is hashed</em> 
                         </td>
                         <td>
-                            <asp:Label ID="WaiterIDLabel" runat="server" Text='<%# Item.WaiterID %>'>'></asp:Label>
-                            <asp:DropDownList ID="WaiterIDDropDown_Item" runat="server" DataSourceID="WaiterDataSource" DataTextField="FullName" DataValueField="WaiterID"  SelectValue='<%# Item.WaiterID %>>' Enabled="False" AppendDataBoundItems="True">
+                            <asp:Label ID="WaiterIDLabel" runat="server" Text="<%# Item.WaiterID %>"></asp:Label>
+                            <asp:DropDownList ID="WaiterIDDropDown_Item" runat="server" DataSourceID="WaiterDataSource" DataTextField="FullName" DataValueField="WaiterID"  SelectValue="<%# Item.WaiterID %>" Enabled="False" AppendDataBoundItems="True">
                              <asp:ListItem Value=" " >[none]</asp:ListItem>
                             </asp:DropDownList>
                         </td>
                         <td>
-                            <asp:Label ID="RolesCountLabel" runat="server" Text='<%# string.Join(", ", Item.Roles.Select(x => x.RoleId).ToArray()) %>'>'></asp:Label>
+                            <asp:Label ID="RolesCountLabel" runat="server" Text='<%# string.Join(", ", Item.Roles.Select(x => x.RoleId).ToArray()) %>'></asp:Label>
                         </td>
                     </tr>
                 </ItemTemplate>
@@ -49,8 +49,7 @@
                         <tr runat="server" >
                             <td runat="server" >
                                 <table runat="server" id="itemPlaceholderContainer" class="table table-condensed table-hover table-striped" >
-                                    <tr runat="server" >
-                                        <th runat="server" >Action</th>
+                                    <tr runat="server" >                                    
                                         <th runat="server">User Name</th>
                                         <th runat="server">Email</th>
                                         <th runat="server">Password</th>
@@ -89,10 +88,10 @@
                 <ItemTemplate>
                     <tr>
                         <td>
-                            <asp:Label ID="NameLabel" runat="server" Text='<%# Item.Name %>'>'></asp:Label>
+                            <asp:Label Text='<%# Item.Name %>' ID="NameLabel" runat="server" />
                         </td>
                         <td>
-                            <asp:Label ID="UserCountLabel" runat="server" Text='<%# Item.Users.Count %>'>'  ></asp:Label>
+                            <asp:Label ID="UserCountLabel" runat="server" Text="<%# Item.Users.Count %>"></asp:Label>
                         </td>
                     </tr>
                 </ItemTemplate>
