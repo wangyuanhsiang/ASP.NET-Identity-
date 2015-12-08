@@ -4,6 +4,8 @@ using Microsoft.Owin.Security;
 using System.Web;
 using System;
 using eToolsWeb;
+using eToolsSystem.Entities.Security;
+using eToolsSystem.BLL.Security;
 
 namespace eToolsWeb
 {
@@ -21,13 +23,13 @@ namespace eToolsWeb
     //}
 
     #region Helpers
-    public class UserManager : UserManager<ApplicationUser>
-    {
-        public UserManager()
-            : base(new UserStore<ApplicationUser>(new ApplicationDbContext()))
-        {
-        }
-    }
+    //public class UserManager : UserManager<ApplicationUser>
+    //{
+    //    public UserManager()
+    //        : base(new UserStore<ApplicationUser>(new ApplicationDbContext()))
+    //    {
+    //    }
+    //}
 }
 
 namespace eToolsWeb

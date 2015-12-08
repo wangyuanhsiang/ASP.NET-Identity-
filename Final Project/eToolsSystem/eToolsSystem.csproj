@@ -58,6 +58,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\Security\RoleManager.cs" />
+    <Compile Include="BLL\Security\UserManager.cs" />
     <Compile Include="BLL\TempaleControll.cs" />
     <Compile Include="DAL\eToolDBContext.cs" />
     <Compile Include="DAL\Security\ApplicationDbContext.cs" />
@@ -92,7 +94,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="BLL\Security\" />
     <Folder Include="Entities\DTO\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
