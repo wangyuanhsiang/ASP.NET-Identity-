@@ -20,6 +20,8 @@ namespace eToolsSystem.Entities
         [StringLength(10)]
         public string CustomerID { get; set; }
 
+        public string UserName { get; set; }
+
         public int? LoginID { get; set; }
 
         public Guid TrackingCookie { get; set; }

@@ -11,7 +11,7 @@ namespace eToolsSystem.DAL.Security
     internal class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection")
+            : base("eTool")
         {
         }
     }

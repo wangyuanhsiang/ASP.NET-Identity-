@@ -12,7 +12,7 @@ namespace eToolsSystem.DAL
 {
     public class eToolDBContext : DbContext
     {
-        public eToolDBContext() : base("name=eTool") { }
+        public eToolDBContext() : base("eTool") { }
 
         public virtual DbSet<C__RefactorLog> C__RefactorLog { get; set; }
         public virtual DbSet<Category> Categories { get; set; }

@@ -11,7 +11,7 @@ namespace eRestaurant.Framework.DAL
 {
     internal class RestaurantContext : DbContext
     {
-        public RestaurantContext() : base("name = W") { }
+        public RestaurantContext() : base("DefaultConnection") { }
 
         public DbSet<Bill> Bills { get; set; }
         public DbSet<BillItem> BillItems { get; set; }

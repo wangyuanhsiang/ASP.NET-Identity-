@@ -82,6 +82,7 @@
     <Compile Include="Entities\SaleRefund.cs" />
     <Compile Include="Entities\SaleRefundDetail.cs" />
     <Compile Include="Entities\Security\ApplicationUser.cs" />
+    <Compile Include="Entities\Security\SecurityRoles.cs" />
     <Compile Include="Entities\ShoppingCart.cs" />
     <Compile Include="Entities\ShoppingCartItem.cs" />
     <Compile Include="Entities\ShoppingCartOnlineCustomer.cs" />
