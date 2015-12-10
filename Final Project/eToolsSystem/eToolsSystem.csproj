@@ -85,7 +85,7 @@
     <Compile Include="Entities\Security\SecurityRoles.cs" />
     <Compile Include="Entities\ShoppingCart.cs" />
     <Compile Include="Entities\ShoppingCartItem.cs" />
-    <Compile Include="Entities\ShoppingCartOnlineCustomer.cs" />
+    <Compile Include="Entities\OnlineCustomer.cs" />
     <Compile Include="Entities\StockItem.cs" />
     <Compile Include="Entities\Vendor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

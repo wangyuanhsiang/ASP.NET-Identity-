@@ -6,8 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using eToolsSystem.BLL.Security;
 
-
-public partial class Admin_Security_SecurityManager : System.Web.UI.Page
+public partial class Admin_Security_SecurityManagement : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -37,7 +36,7 @@ public partial class Admin_Security_SecurityManager : System.Web.UI.Page
             var controller = new UserManager();
             controller.AddDefaultUsers();
             DataBindUserList();
-        }   
+        }
     }
     protected void RolesListView_ItemCommand(object sender, ListViewCommandEventArgs e)
     {

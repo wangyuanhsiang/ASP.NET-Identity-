@@ -17,8 +17,8 @@ void Main()
     select new ShappingCartPOCOs 
     {
       Description = StockItem.Description,
-	  QuantityOnHand = StockItem.QuantityOnHand - 3,
-      QuantityOnOrder = StockItem.QuantityOnOrder + 3
+	  QuantityOnHand = StockItem.QuantityOnHand,
+      QuantityOnOrder = StockItem.QuantityOnOrder
     };
    data.Dump();
 }

@@ -15,6 +15,7 @@ void Main()
     select new StockItemPOCOs 
     {
 	  ID = StockItem.Category.CategoryID,
+	  StockItemID = StockItem.StockItemID,
       SellingPrice =  StockItem.SellingPrice,
       Description = StockItem.Description,
       QuantityOnHand = StockItem.QuantityOnHand
@@ -27,6 +28,7 @@ void Main()
 public class StockItemPOCOs
 {
    public int ID {get; set;}
+   public int StockItemID { get; set; }
    public decimal SellingPrice {get; set;}
    public string Description {get; set;}
    public decimal QuantityOnHand {get;set;}

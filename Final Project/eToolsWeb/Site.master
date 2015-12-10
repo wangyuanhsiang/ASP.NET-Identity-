@@ -11,7 +11,7 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
-    <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
@@ -49,9 +49,8 @@
                     <a class="navbar-brand" runat="server" href="~/">Application name</a>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <%-- the bootstrap version of a simple menu 
                     <ul class="nav navbar-nav">
-                     <li><a runat="server" href="~/">Home</a></li>
+                        <li><a runat="server" href="~/">Home</a></li>
                         <li><a runat="server" href="~/Admin/ShoppingCart.aspx">Products</a></li>
                         <li><a runat="server" href="~/About">About Us</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
@@ -59,25 +58,8 @@
                             <span class="glyphicon glyphicon-shopping-cart"></span> View Cart(<asp:Label ID="lbViewCart" runat="server" Text="0"></asp:Label>)
                             </a>
 
-                        </li> 
-                    </ul> --%>
-                      <asp:Menu ID="Menu1" runat="server" 
-                          DataSourceID="SiteMapDataSourceRepoDemo" CssClass=""
-                         Orientation="Horizontal" StaticDisplayLevels="1"
-                         IncludeStyleBlock="false" StaticMenuStyle-CssClass="nav navbar-nav" 
-                         StaticSelectedStyle-CssClass="active" DynamicMenuStyle-CssClass="dropdown-menu" 
-                          EnableViewState="false" EnableTheming="false">
-                    </asp:Menu>
-                    <script>
-                        /* Remove float styling that was injected for the menu control */
-                        $(function () {
-                            //Isolate the context for applying Bootstrap styling
-                            $('#Menu1').next().removeAttr('style');
-                        });
-                    </script>
-                    <asp:SiteMapDataSource ID="SiteMapDataSourceRepoDemo" runat="server" 
-                          ShowStartingNode="false"/>
-
+                        </li>
+                    </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">
@@ -87,12 +69,11 @@
                         </AnonymousTemplate>
                         <LoggedInTemplate>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %>
-                    !</a></li>
+                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %>!</a></li>
                                 <li>
                                     <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
                                 </li>
-                    </ul>
+                            </ul>
                         </LoggedInTemplate>
                     </asp:LoginView>
                 </div>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="SecurityManagement.aspx.cs" Inherits="Admin_Security_SecurityManager" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="SecurityManagement.aspx.cs" Inherits="Admin_Security_SecurityManagement" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
     <div class="row jumbotron">
@@ -52,21 +52,20 @@
                         <tr runat="server" id="itemPlaceholder"></tr>
                     </table>
                 </LayoutTemplate>
-                  <ItemTemplate>
-                     <tr>
-                         <td>
-                             <asp:Label ID="NameLabel" runat="server" Text="<%# Item.Name %>">"></asp:Label>
-                         </td>
-                     </tr>
-                 </ItemTemplate>  
-                  <EmptyDataTemplate>
+                <ItemTemplate>
                     <tr>
                         <td>
-                            No roles in this sites.
-                            <asp:LinkButton runat="server" ID="AddDefaultRolesButton" Text="Add default security roles"  CommandName="AddDefaultRoles"/>
+                            <asp:Label ID="NameLabel" runat="server" Text="<%# Item.Name %>">"></asp:Label>
                         </td>
                     </tr>
-                </EmptyDataTemplate>       
+                </ItemTemplate>
+                <EmptyDataTemplate>
+                    <tr>
+                        <td>No roles in this sites.
+                            <asp:LinkButton runat="server" ID="AddDefaultRolesButton" Text="Add default security roles" CommandName="AddDefaultRoles" />
+                        </td>
+                    </tr>
+                </EmptyDataTemplate>
             </asp:ListView>
         </div>
     </div>

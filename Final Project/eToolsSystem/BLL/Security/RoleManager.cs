@@ -17,16 +17,16 @@ namespace eToolsSystem.BLL.Security
         {
         }
 
-         public void AddDefaultRoles()
+        public void AddDefaultRoles()
         {
-             foreach(string roleName  in SecurityRoles.DefaultSecurityRoles)
-             {
-                 // Check if it exists
-                 if(!Roles.Any(r => r.Name == roleName))
-                 {
-                     this.Create(new IdentityRole(roleName));
-                 }
-             }
+            foreach (string roleName in SecurityRoles.DefaultSecurityRoles)
+            {
+                // Check if it exists
+                if (!Roles.Any(r => r.Name == roleName))
+                {
+                    this.Create(new IdentityRole(roleName));
+                }
+            }
         }
     }
 }

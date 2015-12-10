@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace eToolsSystem.Entities.Security
 {
-     internal static class SecurityRoles
+    internal static class SecurityRoles
     {
         public const string WebsiteAdmins = "WebsiteAdmins";
         public const string RegisteredUsers = "RegisteredUsers";
         public const string Customer = "Customer";
 
-          public static List<string> DefaultSecurityRoles
+        public static List<string> DefaultSecurityRoles
         {
             get
             {

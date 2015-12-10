@@ -13,6 +13,10 @@ namespace eToolsSystem.BLL
     [DataObject]
     public class TempaleControll
     {
+       
+
+
+
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<Sale> getSales() 
         {
@@ -37,6 +41,7 @@ namespace eToolsSystem.BLL
                                ID = Category.CategoryID,
                                Description = Category.Description,
                                ConutItems = (from Item in Category.StockItems select Item.StockItemID).Count(),
+                               AllItems = 0
                            };
               
                 return data.ToList();
@@ -61,6 +66,7 @@ namespace eToolsSystem.BLL
                                select new StockItemPOCOs
                                {
                                    ID = StockItem.Category.CategoryID,
+                                   StockItemID = StockItem.StockItemID,
                                    SellingPrice = StockItem.SellingPrice,
                                    Description = StockItem.Description,
                                    QuantityOnHand = StockItem.QuantityOnHand
@@ -75,6 +81,7 @@ namespace eToolsSystem.BLL
                                select new StockItemPOCOs
                                {
                                    ID = StockItem.Category.CategoryID,
+                                   StockItemID = StockItem.StockItemID,
                                    SellingPrice = StockItem.SellingPrice,
                                    Description = StockItem.Description,
                                    QuantityOnHand = StockItem.QuantityOnHand
@@ -87,40 +94,78 @@ namespace eToolsSystem.BLL
 
         #endregion
 
+
         #region -- AddToCart
-        [DataObjectMethod(DataObjectMethodType.Update, false)]
+     
         public void AddToCart(  int ProductId, int Quantities)
         {
-            //using (var context = new eToolDBContext())
+
+            eToolDBContext ShoppingCartHeart = new eToolDBContext();
+
+            var cartItem = ShoppingCartHeart.ShoppingCartItems.SingleOrDefault(x => x.StockItem.StockItemID == ProductId && x.ShoppingCartID == ProductId);
+            if(cartItem == null)
+            {
+                cartItem = new ShoppingCartItem
+                {
+                    ShoppingCartID = ProductId,
+                    StockItemID = ProductId,
+                    Quantity = Quantities
+                };
+                ShoppingCartHeart.ShoppingCartItems.Add(cartItem);
+            }
+            else
+            {
+                Quantities = cartItem.Quantity + Quantities;
+            }
+            ShoppingCartHeart.SaveChanges();
+
+            //var cartItem = addData.StockItems.Single(x => x.StockItemID == ProductId);
+            //cartItem = new StockItem
             //{
+            //    StockItemID = ProductId,
+            //    Description = cartItem.Description,
+            //    SellingPrice = cartItem.SellingPrice,
+            //    PurchasePrice = cartItem.PurchasePrice,
+            //    QuantityOnHand = cartItem.QuantityOnHand,
+            //    QuantityOnOrder = Quantities,
+            //    ReOrderLevel = cartItem.ReOrderLevel,
+            //    Discontinued = cartItem.Discontinued,
+            //    VendorID = cartItem.VendorID,
+            //    VendorStockNumber = cartItem.VendorStockNumber,
+            //    CategoryID = cartItem.CategoryID
+            //};
 
-            //    var data = from StockItem in context.StockItems
-            //               //where StockItem.Category.CategoryID == 4
-            //               where StockItem.Discontinued == false
-            //                   //&& StockItem.Discontinued == false
-            //               && StockItem.Description == Description
-            //               select new ShappingCartPOCOs
-            //               {
-            //                   Description = StockItem.Description,
-            //                   QuantityOnHand = StockItem.QuantityOnHand - Quantities,
-            //                   QuantityOnOrder = StockItem.QuantityOnOrder + Quantities
-            //               };
-         
+            //addData.StockItems.Add(cartItem);
 
-            //}
+            //addData.SaveChanges();
 
-            var context = new eToolDBContext().StockItems.Single(x => x.CategoryID == ProductId);
-            context.QuantityOnHand = context.QuantityOnHand - Quantities;
-          //  context.QuantityOnOrder = context.QuantityOnOrder + Quantities;
-            new eToolDBContext().SaveChanges();
-            
-           
         }
-
-      
-        
         #endregion
 
+        #region - AddToOnlineCustomer
+        public void AddToOnlineCustomer(Guid TrC ,string Name)
+        {
+             using(var context = new eToolDBContext())
+             {
+                    var Customer = context.OnlineCustomers.SingleOrDefault(x =>  x.TrackingCookie == TrC );
+                    if (Customer == null)
+                    {
+                        Customer = new OnlineCustomer
+                        {
+                            //OnlineCustomerID = ID,
+                            UserName = Name,
+                            CreatedOn = DateTime.Now,
+                        };
+                        context.OnlineCustomers.Add(Customer);
+                        context.SaveChanges();
+                    }
+                     
+   
+                  
+             }
+             
+        }
+        #endregion
 
     }
 }

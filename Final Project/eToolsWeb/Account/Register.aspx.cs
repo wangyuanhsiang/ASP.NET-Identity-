@@ -5,7 +5,6 @@ using System.Web.UI;
 using eToolsWeb;
 using eToolsSystem.BLL.Security;
 using eToolsSystem.Entities.Security;
-
 public partial class Account_Register : Page
 {
     protected void CreateUser_Click(object sender, EventArgs e)

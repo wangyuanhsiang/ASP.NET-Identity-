@@ -5,7 +5,6 @@ using System.Linq;
 using eToolsWeb;
 using eToolsSystem.BLL.Security;
 
-
 public partial class Account_Manage : System.Web.UI.Page
 {
     protected string SuccessMessage

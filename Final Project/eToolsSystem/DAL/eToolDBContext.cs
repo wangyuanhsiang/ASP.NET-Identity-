@@ -31,7 +31,7 @@ namespace eToolsSystem.DAL
         public virtual DbSet<Sale> Sales { get; set; }
         public virtual DbSet<ShoppingCart> ShoppingCarts { get; set; }
         public virtual DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
-        public virtual DbSet<ShoppingCartOnlineCustomer> ShoppingCartOnlineCustomers { get; set; }
+        public virtual DbSet<OnlineCustomer> OnlineCustomers { get; set; }
         public virtual DbSet<StockItem> StockItems { get; set; }
         public virtual DbSet<Vendor> Vendors { get; set; }
 
@@ -157,9 +157,9 @@ namespace eToolsSystem.DAL
                 .WithRequired(e => e.ShoppingCart)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<ShoppingCartOnlineCustomer>()
+            modelBuilder.Entity<OnlineCustomer>()
                 .HasMany(e => e.ShoppingCarts)
-                .WithRequired(e => e.ShoppingCartOnlineCustomer)
+                .WithRequired(e => e.OnlineCustomer)
                 .HasForeignKey(e => e.OnlineCustomerID)
                 .WillCascadeOnDelete(false);
 

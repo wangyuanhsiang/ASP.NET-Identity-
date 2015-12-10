@@ -26,6 +26,6 @@ namespace eToolsSystem.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ShoppingCartItem> ShoppingCartItems { get; set; }
 
-        public virtual ShoppingCartOnlineCustomer ShoppingCartOnlineCustomer { get; set; }
+        public virtual OnlineCustomer OnlineCustomer { get; set; }
     }
 }

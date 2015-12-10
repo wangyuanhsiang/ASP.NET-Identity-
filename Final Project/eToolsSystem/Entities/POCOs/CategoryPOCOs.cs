@@ -14,10 +14,14 @@ namespace eToolsSystem.Entities.POCOs
         public string Description { get; set; }
         public int ConutItems { get; set; }
 
+        public int AllItems { get; set; }
+
         [NotMapped]
         public string Description_Items
         {
             get { return Description + "  " + ConutItems; }
         }
+
+
     }
 }

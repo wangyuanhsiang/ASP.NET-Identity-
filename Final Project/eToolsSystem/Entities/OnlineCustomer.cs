@@ -6,23 +6,23 @@ namespace eToolsSystem.Entities
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("ShoppingCartOnlineCustomer")]
-    public partial class ShoppingCartOnlineCustomer
+    [Table("OnlineCustomer")]
+    public partial class OnlineCustomer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ShoppingCartOnlineCustomer()
+        public OnlineCustomer()
         {
             ShoppingCarts = new HashSet<ShoppingCart>();
         }
 
-        public int ShoppingCartOnlineCustomerID { get; set; }
+        public int OnlineCustomerID { get; set; }
 
-        [StringLength(10)]
-        public string CustomerID { get; set; }
+        //[StringLength(10)]
+        //public string CustomerID { get; set; }
 
-        public string UserName { get; set; }
+        public string UserName { get; set; } 
 
-        public int? LoginID { get; set; }
+        //public int? LoginID { get; set; }
 
         public Guid TrackingCookie { get; set; }
 

@@ -9,6 +9,7 @@ using eToolsSystem.DAL.Security;
 using Microsoft.AspNet.Identity;
 using eToolsSystem.DAL;
 
+
 namespace eToolsSystem.BLL.Security
 {
     public class UserManager : UserManager<ApplicationUser>
@@ -30,34 +31,34 @@ namespace eToolsSystem.BLL.Security
 
         public void AddDefaultUsers()
         {
-           using(var context = new eToolDBContext())
-           {
-               var onlieUser = from data in context.ShoppingCartOnlineCustomers where data.ShoppingCartOnlineCustomerID == 0 select data;
-               foreach (var person in onlieUser)
-               {
-                   if(!Users.Any(u => u.OnlineCustomerID.HasValue && u.OnlineCustomerID.Value == person.ShoppingCartOnlineCustomerID))
-                   {
-                       string Name = string.Format(STR_USERNAME_FORMAT, person.UserName);
-                       var appUser = new ApplicationUser()
-                       {
-                           UserName = Name,
-                           Email = string.Format(STR_EMAIL_FORMAT),
-                           OnlineCustomerID = person.ShoppingCartOnlineCustomerID
-                       };
-                       this.Create(appUser, STR_DEFAULT_PASSWORD);
-                   }
-               }
-               // Add a web  master user
-               if(!Users.Any(u => u.UserName.Equals(STR_WEBMASTER_USERNAME)))
-               {
-                   var webMasterAccount = new ApplicationUser()
-                   {
-                       UserName = STR_WEBMASTER_USERNAME,
-                       Email = string.Format(STR_EMAIL_FORMAT, STR_WEBMASTER_USERNAME)
-                   };
-                   this.Create(webMasterAccount, STR_DEFAULT_PASSWORD);
-               }
-           }
+            using (var context = new eToolDBContext())
+            {
+                var onlieUser = from data in context.OnlineCustomers where data.OnlineCustomerID == 0 select data;
+                foreach (var person in onlieUser)
+                {
+                    if (!Users.Any(u => u.OnlineCustomerID.HasValue && u.OnlineCustomerID.Value == person.OnlineCustomerID))
+                    {
+                        string Name = string.Format(STR_USERNAME_FORMAT, person.UserName);
+                        var appUser = new ApplicationUser()
+                        {
+                            UserName = Name,
+                            Email = string.Format(STR_EMAIL_FORMAT),
+                            OnlineCustomerID = person.OnlineCustomerID
+                        };
+                        this.Create(appUser, STR_DEFAULT_PASSWORD);
+                    }
+                }
+                // Add a web  master user
+                if (!Users.Any(u => u.UserName.Equals(STR_WEBMASTER_USERNAME)))
+                {
+                    var webMasterAccount = new ApplicationUser()
+                    {
+                        UserName = STR_WEBMASTER_USERNAME,
+                        Email = string.Format(STR_EMAIL_FORMAT, STR_WEBMASTER_USERNAME)
+                    };
+                    this.Create(webMasterAccount, STR_DEFAULT_PASSWORD);
+                }
+            }
         }
     }
 }
